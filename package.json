@@ -1,0 +1,32 @@
+{
+  "name": "compare-builder",
+  "version": "1.0.0",
+  "description": "Builds compare functions to make Sorting easier",
+  "keywords": [
+    "array",
+    "tool",
+    "sort",
+    "sorting",
+    "compare",
+    "comparison",
+    "comparator"
+  ],
+  "repository": "github:doo-gl/compare-builder",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prepublish": "tsc"
+  },
+  "author": "Doogal Simpson",
+  "license": "MIT",
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/jest": "^29.5.11",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+
+  }
+}
