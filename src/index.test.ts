@@ -1,9 +1,9 @@
-import {byAttributeASC, byAttributeDESC, combine, CompareBuilder, sortByASC, sortByDESC} from "./index";
+import {byAttributeAsc, byAttributeDesc, combine, CompareBuilder, sortByAsc, sortByDesc} from "./index";
 
 
 describe("Compare Builder", () => {
 
-  describe("byAttributeASC", () => {
+  describe("byAttributeAsc", () => {
 
     it("Should sort by Attribute ASC", () => {
 
@@ -15,7 +15,7 @@ describe("Compare Builder", () => {
         {id: "e", att1: "5"},
       ]
 
-      const result = input.slice().sort(byAttributeASC(obj => obj.att1))
+      const result = input.slice().sort(byAttributeAsc(obj => obj.att1))
 
       expect(result.map(obj => obj.id)).toEqual(["c", "d", "a", "b", "e"])
 
@@ -31,7 +31,7 @@ describe("Compare Builder", () => {
         {id: "e", att1: "5"},
       ]
 
-      const result = input.slice().sort(byAttributeASC(obj => obj.att1))
+      const result = input.slice().sort(byAttributeAsc(obj => obj.att1))
 
       expect(result.map(obj => obj.id)).toEqual(["c", "d", "b", "e", "a"])
 
@@ -47,7 +47,7 @@ describe("Compare Builder", () => {
         {id: "e", att1: "5"},
       ]
 
-      const result = input.slice().sort(byAttributeASC(obj => obj.att1))
+      const result = input.slice().sort(byAttributeAsc(obj => obj.att1))
 
       expect(result.map(obj => obj.id)).toEqual(["c", "d", "b", "e", "a"])
 
@@ -62,16 +62,16 @@ describe("Compare Builder", () => {
         {id: "e", att1: 5},
       ]
 
-      const result = input.slice().sort(byAttributeASC(obj => obj.att1))
+      const result = input.slice().sort(byAttributeAsc(obj => obj.att1))
 
       expect(result.map(obj => obj.id)).toEqual(["c", "d", "a", "b", "e"])
     })
 
   })
 
-  describe("byAttributeDESC", () => {
+  describe("byAttributeDesc", () => {
 
-    it("Should sort by Attribute DESC", () => {
+    it("Should sort by Attribute Desc", () => {
 
       const input = [
         {id: "a", att1: "3"},
@@ -81,7 +81,7 @@ describe("Compare Builder", () => {
         {id: "e", att1: "5"},
       ]
 
-      const result = input.slice().sort(byAttributeDESC(obj => obj.att1))
+      const result = input.slice().sort(byAttributeDesc(obj => obj.att1))
 
       expect(result.map(obj => obj.id)).toEqual(["e", "b", "a", "d", "c"])
 
@@ -97,7 +97,7 @@ describe("Compare Builder", () => {
         {id: "e", att1: "5"},
       ]
 
-      const result = input.slice().sort(byAttributeDESC(obj => obj.att1))
+      const result = input.slice().sort(byAttributeDesc(obj => obj.att1))
 
       expect(result.map(obj => obj.id)).toEqual(["e", "b", "d", "c", "a"])
 
@@ -113,7 +113,7 @@ describe("Compare Builder", () => {
         {id: "e", att1: "5"},
       ]
 
-      const result = input.slice().sort(byAttributeDESC(obj => obj.att1))
+      const result = input.slice().sort(byAttributeDesc(obj => obj.att1))
 
       expect(result.map(obj => obj.id)).toEqual(["e", "b", "d", "c", "a"])
 
@@ -128,7 +128,7 @@ describe("Compare Builder", () => {
         {id: "e", att1: 5},
       ]
 
-      const result = input.slice().sort(byAttributeDESC(obj => obj.att1))
+      const result = input.slice().sort(byAttributeDesc(obj => obj.att1))
 
       expect(result.map(obj => obj.id)).toEqual(["e", "b", "a", "d", "c"])
     })
@@ -150,8 +150,8 @@ describe("Compare Builder", () => {
       const result = input.slice()
         .sort(
           combine(
-            byAttributeASC(obj => obj.att1),
-            byAttributeDESC(obj => obj.att2)
+            byAttributeAsc(obj => obj.att1),
+            byAttributeDesc(obj => obj.att2)
           )
         )
 
@@ -172,8 +172,8 @@ describe("Compare Builder", () => {
       const result = input.slice()
         .sort(
           combine(
-            byAttributeASC(obj => obj.att1),
-            byAttributeASC(obj => obj.att2)
+            byAttributeAsc(obj => obj.att1),
+            byAttributeAsc(obj => obj.att2)
           )
         )
 
@@ -210,7 +210,7 @@ describe("Compare Builder", () => {
 
   })
 
-  describe("sortByASC", () => {
+  describe("sortByAsc", () => {
 
     it("Should build comparator builder with ASC first", () => {
 
@@ -224,10 +224,10 @@ describe("Compare Builder", () => {
 
       const result = input.slice()
         .sort(
-            sortByASC<{id:string, att1:string, att2:string, att3:string}, string>(obj => obj.att1)
-            .desc(obj => obj.att2)
-            .asc(obj => obj.att3)
-            .build()
+            sortByAsc<{id:string, att1:string, att2:string, att3:string}, string>(obj => obj.att1)
+              .desc(obj => obj.att2)
+              .asc(obj => obj.att3)
+              .build()
         )
 
       expect(result.map(obj => obj.id)).toEqual(["c", "e", "d", "b", "a"])
@@ -236,7 +236,7 @@ describe("Compare Builder", () => {
 
   })
 
-  describe("sortByDESC", () => {
+  describe("sortByDesc", () => {
 
     it("Should build comparator builder with DESC first", () => {
 
@@ -250,7 +250,7 @@ describe("Compare Builder", () => {
 
       const result = input.slice()
         .sort(
-          sortByDESC<{id:string, att1:string, att2:string, att3:string}, string>(obj => obj.att1)
+          sortByDesc<{id:string, att1:string, att2:string, att3:string}, string>(obj => obj.att1)
             .desc(obj => obj.att2)
             .asc(obj => obj.att3)
             .build()
